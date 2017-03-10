@@ -1,0 +1,16 @@
+{
+  "name": "react-native-cover-image",
+  "description": "A <CoverImage> element for react-native",
+  "version": "0.1.0",
+  "licence": "MIT",
+  "author": {
+    "name": "Sakari Tuominen",
+    "email": "sakarit@gmail.com",
+    "url": "https://github.com/sakarit"
+  },
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sakarit/react-native-cover-image.git"
+  } 
+}
