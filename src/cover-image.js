@@ -31,22 +31,21 @@ class CoverImage extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={[styles.imageContainer, {backgroundColor}]}>
+        <View style={[styles.image, {backgroundColor}]}>
           <Animated.Image
             style={[
-              styles.image,
+              styles.animated,
               {opacity, width: size, height: size}
             ]}
             source={source}
           >
-            <View style={styles.imageContent}>
+            <View style={styles.content}>
               {content}
             </View>
           </Animated.Image>
         </View>
         <ScrollView
           style={styles.scrollContainer}
-          contentContainerStyle={contentContainerStyle}
           onScroll={this.onScroll}
           scrollEventThrottle={16}
         >
@@ -56,7 +55,7 @@ class CoverImage extends Component {
           >
             <View style={styles.touchable} />
           </TouchableWithoutFeedback>
-          <View style={styles.scrollContent}>
+          <View style={[{backgroundColor}, contentContainerStyle]}>
             {children}
           </View>
         </ScrollView>
@@ -98,22 +97,24 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'hidden',
   },
-  imageContainer: {
+  image: {
     margin: -PADDING,
     width: PADDED_WIDTH,
     alignItems: 'center',
   },
-  image: {
+  animated: {
     alignItems: 'center',
     justifyContent: 'flex-end',
     resizeMode: 'cover',
   },
-  imageContent: {
+  content: {
     width: WIDTH,
     height: PADDED_WIDTH,
     paddingVertical: PADDING,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-end',
+  },
+  touchable: {
+    width: WIDTH,
+    height: WIDTH,
   },
   scrollContainer: {
     position: 'absolute',
@@ -121,9 +122,5 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     right: 0,
-  },
-  touchable: {
-    width: WIDTH,
-    height: WIDTH,
   }
 })
