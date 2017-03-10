@@ -24,14 +24,14 @@ class CoverImage extends Component {
 
   render() {
     const
-      {source, contentContainerStyle, onPress, children} = this.props,
+      {source, contentContainerStyle, backgroundColor, onPress, children} = this.props,
       {scrollY} = this.state,
       opacity = scrollY.interpolate({inputRange: [0, WIDTH], outputRange: [1, .2]}),
       size = scrollY.interpolate({inputRange: [-WIDTH, 0, WIDTH], outputRange: [WIDTH + PADDED_WIDTH, PADDED_WIDTH, WIDTH]})
 
     return (
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
+        <View style={[styles.imageContainer, {backgroundColor}]}>
           <Animated.Image
             style={[
               styles.image,
@@ -81,9 +81,14 @@ class CoverImage extends Component {
 CoverImage.propTypes = {
   source: Image.propTypes.source,
   content: PropTypes.element,
-  onPress: PropTypes.func,
   contentContainerStyle: ScrollView.propTypes.contentContainerStyle,
+  backgroundColor: PropTypes.string.isRequired,
+  onPress: PropTypes.func,
   children: ScrollView.propTypes.children
+}
+
+CoverImage.defaultProps = {
+  backgroudColor: 'black'
 }
 
 export default CoverImage
@@ -98,7 +103,6 @@ const styles = StyleSheet.create({
     margin: -PADDING,
     width: PADDED_WIDTH,
     alignItems: 'center',
-    backgroundColor: 'black',
   },
   image: {
     alignItems: 'center',

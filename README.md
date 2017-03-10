@@ -1,0 +1,1 @@
+# Dynamic Cover Image View for React Native
