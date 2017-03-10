@@ -24,7 +24,7 @@ class CoverImage extends Component {
 
   render() {
     const
-      {source, contentContainerStyle, backgroundColor, onPress, children} = this.props,
+      {source, content, contentContainerStyle, backgroundColor, onPress, children} = this.props,
       {scrollY} = this.state,
       opacity = scrollY.interpolate({inputRange: [0, WIDTH], outputRange: [1, .2]}),
       size = scrollY.interpolate({inputRange: [-WIDTH, 0, WIDTH], outputRange: [WIDTH + PADDED_WIDTH, PADDED_WIDTH, WIDTH]})
@@ -83,12 +83,11 @@ CoverImage.propTypes = {
   content: PropTypes.element,
   contentContainerStyle: ScrollView.propTypes.contentContainerStyle,
   backgroundColor: PropTypes.string.isRequired,
-  onPress: PropTypes.func,
-  children: ScrollView.propTypes.children
+  onPress: PropTypes.func
 }
 
 CoverImage.defaultProps = {
-  backgroudColor: 'black'
+  backgroundColor: 'black'
 }
 
 export default CoverImage
